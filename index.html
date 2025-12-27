@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alex NGUYEN | Ingénieur Info & Réseaux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased selection:bg-green-500 selection:text-black">
+
+    <div id="preloader">
+        <div class="cyber-loader"></div>
+        <div class="loader-text" id="loader-percentage">0%</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="matrix-bg" id="matrix-container"></div>
+
+    <nav class="fixed top-0 left-0 w-full bg-black/90 backdrop-blur-md shadow-lg z-[50] border-b border-green-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#home" class="flex-shrink-0 text-xl font-bold font-mono text-green-500 hover-trigger js-scrollTo">&lt;Alex.N /&gt;</a>
+                
+                <div class="hidden md:flex items-center flex-grow justify-end space-x-8">
+                    <a href="#home" class="nav-link px-3 py-2 text-sm font-medium hover:text-green-400 transition hover-trigger js-scrollTo">Accueil</a>
+                    <a href="#skills" class="nav-link px-3 py-2 text-sm font-medium hover:text-green-400 transition hover-trigger js-scrollTo">Compétences</a>
+                    <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium hover:text-green-400 transition hover-trigger js-scrollTo">Expériences</a>
+                    <a href="#formation" class="nav-link px-3 py-2 text-sm font-medium hover:text-green-400 transition hover-trigger js-scrollTo">Formation</a>
+                    <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium hover:text-green-400 transition hover-trigger js-scrollTo">Contact</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-green-400 hover:text-white focus:outline-none transition-transform duration-300 hover-trigger">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-green-900/30">
+            <div id="scroll-progress" class="h-full bg-green-500 shadow-[0_0_10px_#00ff41] w-0 transition-none ease-out" style="will-change: width"></div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 opacity-0 invisible transition-all duration-300 ease-in-out flex flex-col justify-center items-center space-y-8 text-xl">
+        <a href="#home" class="text-white hover:text-green-400 mobile-link js-scrollTo">Accueil</a>
+        <a href="#skills" class="text-white hover:text-green-400 mobile-link js-scrollTo">Compétences</a>
+        <a href="#experience" class="text-white hover:text-green-400 mobile-link js-scrollTo">Expériences</a>
+        <a href="#formation" class="text-white hover:text-green-400 mobile-link js-scrollTo">Formation</a>
+        <a href="#contact" class="text-white hover:text-green-400 mobile-link js-scrollTo">Contact</a>
+    </div>
+
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+        <div class="flex flex-col md:flex-row items-center justify-between w-full">
+            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left reveal-on-scroll">
+                <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-green-400 uppercase bg-green-900/20 rounded-full border border-green-500/30">
+                    Recherche Alternance Sept. 2026
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Salut, je suis <br> <span class="gradient-text">Alex NGUYEN</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl text-gray-300 mb-6 font-mono min-h-[64px]">
+                    <span class="text-green-500">></span> <span id="typing-text" class="typing-cursor"></span>
+                </h2>
+                <p class="text-gray-400 mb-6 text-lg max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Étudiant en CPGE ATS, passionné par le <strong class="text-white">développement web</strong>, l'infrastructure <strong class="text-white">Linux</strong> et la <strong class="text-white">Cybersécurité</strong>. Prêt à transformer mes acquis en résultats concrets.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#contact" class="bg-green-600 text-black px-8 py-3 rounded-lg font-bold hover:bg-green-500 transition duration-300 hover-trigger js-scrollTo">Me Contacter</a>
+                    <a href="CV-Alex-NGUYEN-2026.pdf" target="_blank" class="border border-green-500 text-green-400 px-8 py-3 rounded-lg font-bold hover:bg-green-900/20 transition duration-300 hover-trigger flex items-center justify-center gap-2"><i class="fas fa-download"></i> Mon CV</a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center relative reveal-on-scroll stagger-2">
+                <div class="absolute w-72 h-72 bg-green-500/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 border-2 border-dashed border-green-500/50 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                    <div class="w-full h-full rounded-full bg-gray-900 border-4 border-green-500 flex items-center justify-center overflow-hidden floating shadow-2xl hover-trigger">
+                        <img src="https://via.placeholder.com/400" alt="Alex NGUYEN" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-500">
+                    </div>
+                    <div class="absolute bottom-6 -left-12 bg-black/80 backdrop-blur border border-green-500 p-2 rounded-lg shadow-lg flex items-center gap-2 badge-animated" style="animation-delay: 1s;">
+                        <i class="fas fa-shield-alt text-xl text-green-400"></i>
+                        <div><p class="text-xs text-gray-400">Expert</p><p class="font-bold text-white text-sm">Cybersécurité</p></div>
+                    </div>
+                    <div class="absolute top-4 -right-20 bg-black/80 backdrop-blur border border-green-500 p-2 rounded-lg shadow-lg flex items-center gap-2 badge-animated" style="animation-delay: 2s;">
+                        <i class="fas fa-code text-xl text-yellow-400"></i>
+                        <div><p class="text-xs text-gray-400">Passion</p><p class="font-bold text-white text-sm">Développement Web</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-black/40 border-t border-green-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4"><span class="text-green-500">#</span> Mes Compétences</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-transparent mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900/50 backdrop-blur p-8 rounded-2xl border border-gray-800 card-hover group flex flex-col h-full hover-trigger reveal-on-scroll stagger-1">
+                    <div class="bg-blue-900/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/30"><i class="fas fa-code text-blue-400 text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">Développement & Web</h3>
+                    <div class="flex flex-col gap-3 flex-grow text-gray-300 text-sm">
+                        <p><strong class="text-blue-400">Logiciel :</strong> C/C++, Python (Avancé), MicroPython (P.O.P), Java (Notions). Automatisation Bash/Cron.</p>
+                        <p><strong class="text-blue-400">Full-Stack :</strong> HTML5, CSS3, JS, PHP, Bootstrap.</p>
+                        <p><strong class="text-blue-400">Outils :</strong> Git/GitHub, Docker, SQL, Wampserver, UML.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900/50 backdrop-blur p-8 rounded-2xl border border-gray-800 card-hover group flex flex-col h-full hover-trigger reveal-on-scroll stagger-2">
+                    <div class="bg-green-900/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-green-500/30"><i class="fas fa-network-wired text-green-400 text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">Réseaux & Infrastructure</h3>
+                    <div class="flex flex-col gap-3 flex-grow text-gray-300 text-sm">
+                        <p><strong class="text-green-400">Installation :</strong> Switchs, routeurs, bornes Wifi, câblage, serveurs.</p>
+                        <p><strong class="text-green-400">Services :</strong> DNS, DHCP, Active Directory.</p>
+                        <p><strong class="text-green-400">Admin :</strong> VLAN, VLSM, TCP/IP, OSI, NAS (OMV), Oracle Cloud.</p>
+                        <p><strong class="text-green-400">Virtualisation :</strong> VMware ESXi & Workstation Pro.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900/50 backdrop-blur p-8 rounded-2xl border border-gray-800 card-hover group flex flex-col h-full hover-trigger reveal-on-scroll stagger-3">
+                    <div class="bg-purple-900/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-purple-500/30"><i class="fas fa-tools text-purple-400 text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">Maintenance & Sécurité</h3>
+                    <div class="flex flex-col gap-3 flex-grow text-gray-300 text-sm">
+                        <p><strong class="text-purple-400">Hardware :</strong> Diagnostic pannes, assemblage PC, intégration matériel.</p>
+                        <p><strong class="text-purple-400">Système :</strong> Gestion pilotes, installation OS (Windows/Linux), logiciels protection.</p>
+                        <p><strong class="text-purple-400">Cyber :</strong> Wireshark, Nmap, analyse trafic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Expériences Professionnelles</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-transparent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-cyan-500/30 card-hover group md:col-span-2 hover-trigger reveal-on-scroll">
+                    <div class="p-6 h-full flex flex-col">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                     <h3 class="text-xl font-bold text-white">Borne Interactive d'Orientation (Projet JPO)</h3>
+                                     <a href="https://github.com/AlexaNgder/Projet_Borne_Orientation_E6_TEMA" target="_blank" class="text-white hover:text-white transition ripple-effect p-2 bg-cyan-900/20 border border-cyan-500/50 hover:bg-cyan-800/50 hover-trigger"><i class="fab fa-github text-2xl"></i></a>
+                                </div>
+                                <p class="text-cyan-400 text-sm mt-1">Lycée Polyvalent César Baldaccini (Projet Collectif) - Marseille</p>
+                            </div>
+                            <span class="text-xs border border-cyan-500/50 px-3 py-1 rounded text-cyan-300">Janv. – Mai 2025</span>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-2"><strong>Contexte :</strong> Conception d'une borne autonome pour fluidifier l'orientation des visiteurs lors des Journées Portes Ouvertes, facilitant l'accès aux salles et formations via un plan numérique et un système de guidage.</p>
+                        <p class="text-gray-300 text-sm mb-4"><strong>Rôle : Développeur Full-Stack.</strong> Conception d'une borne autonome pour guider les visiteurs via un plan interactif et des QR-Codes personnalisés.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded border border-gray-700">PHP/MySQL</span>
+                            <span class="text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded border border-gray-700">JS/Canvas</span>
+                            <span class="text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded border border-gray-700">Raspberry Pi</span>
+                            <span class="text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded border border-gray-700">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-orange-500/30 card-hover group hover-trigger reveal-on-scroll stagger-1">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold text-white">Agent Logistique & Accueil</h3><span class="text-xs border border-orange-500/50 px-2 py-1 rounded text-orange-300">Août 2023 & Été 2024</span></div>
+                        <p class="text-orange-400 text-sm mt-1">RTM (Régie des Transports Métropolitains) - Marseille</p>
+                        <p class="text-gray-400 text-sm mt-2">Gestion des flux logistiques et accueil des usagers. Développement de la rigueur, ponctualité et gestion du stress.</p>
+                    </div>
+                </div>
+                 <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-green-500/30 card-hover group hover-trigger reveal-on-scroll stagger-2">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold text-white">Administrateur Systèmes</h3><span class="text-xs border border-green-500/50 px-2 py-1 rounded text-green-300">Mai - Juin 2024</span></div>
+                        <p class="text-green-400 text-sm mt-1">Lycée École Libre de Métiers - Marseille</p>
+                        <p class="text-gray-400 text-sm mt-2">Administration d'un parc de 30 postes et 3 serveurs. Gestion Active Directory, droits d'accès et maintenance préventive/curative.</p>
+                    </div>
+                </div>
+                 <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-blue-500/30 card-hover group hover-trigger reveal-on-scroll stagger-1">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold text-white">Technicien Électronique</h3><span class="text-xs border border-blue-500/50 px-2 py-1 rounded text-blue-300">Mai - Juin 2023</span></div>
+                        <p class="text-blue-400 text-sm mt-1">SET (Système Étude Technique) - Marseille</p>
+                        <p class="text-gray-400 text-sm mt-2">Assemblage de cartes électroniques, contrôle qualité et tests fonctionnels des équipements.</p>
+                    </div>
+                </div>
+                <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-yellow-500/30 card-hover group hover-trigger reveal-on-scroll stagger-2">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold text-white">Développeur C++</h3><span class="text-xs border border-yellow-500/50 px-2 py-1 rounded text-yellow-300">Déc. 2022</span></div>
+                        <p class="text-yellow-400 text-sm mt-1">AMANA Consulting - Allemagne</p>
+                        <p class="text-gray-400 text-sm mt-2">Contexte international. Optimisation de code, tests unitaires et debugging C++. Travail en équipe anglophone.</p>
+                    </div>
+                </div>
+                <div class="bg-black/60 backdrop-blur rounded-xl overflow-hidden border border-purple-500/30 card-hover group hover-trigger reveal-on-scroll stagger-1">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold text-white">Technicien Informatique</h3><span class="text-xs border border-purple-500/50 px-2 py-1 rounded text-purple-300">Avril - Juin 2022</span></div>
+                        <p class="text-purple-400 text-sm mt-1">Atelier Express - Marseille</p>
+                        <p class="text-gray-400 text-sm mt-2">Diagnostic de pannes matérielles/logicielles, assemblage de PC sur mesure et installation d'OS (Windows/Linux). Réparation de composants.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation" class="py-20 bg-black/40 relative">
+        <div class="absolute inset-0 pointer-events-none border-2 border-green-500/20 rounded-3xl pulse-border-green z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Parcours Académique</h2>
+            <div class="relative border-l-2 border-green-500/30 ml-4 space-y-12">
+                <div class="relative pl-8 hover-trigger reveal-on-scroll stagger-1">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></div>
+                    <h3 class="text-xl font-bold text-white">CPGE ATS Ingénierie Industrielle</h3>
+                    <span class="text-green-400 text-sm">En cours (2026)</span>
+                    <p class="text-gray-400 mt-1">Lycée Polyvalent César Baldaccini - Niveau Bac+3</p>
+                </div>
+                <div class="relative pl-8 hover-trigger reveal-on-scroll stagger-2">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-black border-2 border-green-500"></div>
+                    <h3 class="text-xl font-bold text-white">BTS CIEL - Option Informatique et Réseaux</h3>
+                    <span class="text-gray-500 text-sm">2025</span>
+                    <p class="text-gray-400 mt-1">Lycée Polyvalent César Baldaccini - Niveau Bac+2</p>
+                </div>
+                <div class="relative pl-8 hover-trigger reveal-on-scroll stagger-3">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-black border-2 border-green-500"></div>
+                    <h3 class="text-xl font-bold text-white">Certificat Cisco Cybersecurity Essentials</h3>
+                    <span class="text-gray-500 text-sm">2024</span>
+                    <p class="text-gray-400 mt-1">Obtenu à Alessandria, Italie - niveau score 90%</p>
+                </div>
+                <div class="relative pl-8 hover-trigger reveal-on-scroll stagger-1">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-black border-2 border-green-500"></div>
+                    <h3 class="text-xl font-bold text-white">Bac Pro Systèmes Numériques - Option RISC</h3>
+                    <span class="text-gray-500 text-sm">2023</span>
+                    <p class="text-gray-400 mt-1">Lycée École Libre de Métiers - Mention Bien</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center hover-trigger reveal-on-scroll">
+            <h2 class="text-3xl font-bold text-white mb-6 min-h-[40px]">
+                <span id="typing-contact" class="typing-cursor"></span>
+            </h2>
+            <p class="text-gray-300 mb-8">Disponible pour alternance Septembre 2026 (3 ans).</p>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="mailto:alexnguyen03122004@gmail.com" class="text-white hover:text-green-400 transition"><i class="fas fa-envelope text-3xl"></i></a>
+                <a href="tel:+33774526369" class="text-white hover:text-green-400 transition"><i class="fas fa-phone text-3xl"></i></a>
+                <a href="https://www.linkedin.com/in/alex-nguyen-32126b290/" target="_blank" class="text-white hover:text-green-400 transition"><i class="fab fa-linkedin text-3xl"></i></a>
+                <a href="https://github.com/AlexaNgder" target="_blank" class="text-white hover:text-green-400 transition"><i class="fab fa-github text-3xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-gray-900 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Alex NGUYEN. Design inspiré CyberPortfolio.</p>
+    </footer>
+
+    <a href="#home" id="back-to-top" class="fixed bottom-8 right-8 bg-green-600 hover:bg-green-500 text-black p-3 rounded-lg shadow-lg opacity-0 invisible transition-all duration-300 z-50 flex justify-center items-center hover-trigger js-scrollTo"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="script.js"></script>
+</body>
+</html>

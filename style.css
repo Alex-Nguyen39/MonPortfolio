@@ -1,0 +1,169 @@
+/* --- CONFIGURATION GLOBALE --- */
+:root { --matrix-green: #00ff41; --bg-dark: #0a0a0a; }
+
+html { scroll-padding-top: 80px; } /* Pour la nav fixe */
+
+body {
+    background-color: var(--bg-dark);
+    color: #f0f0f0;
+    overflow-x: hidden;
+    cursor: auto; /* Par défaut pour mobile */
+}
+
+/* Curseur caché uniquement si souris précise détectée */
+@media (pointer: fine) { body { cursor: none; } }
+
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed; inset: 0; z-index: 99999;
+    background-color: #050505;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+.preloader-hidden { opacity: 0; visibility: hidden; }
+
+.cyber-loader {
+    width: 80px; height: 80px;
+    border: 2px solid transparent; border-top-color: var(--matrix-green); border-radius: 50%;
+    animation: spin 1.5s linear infinite; position: relative;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); will-change: transform;
+}
+.cyber-loader::before, .cyber-loader::after {
+    content: ""; position: absolute; border: 2px solid transparent; border-radius: 50%;
+}
+.cyber-loader::before { top: 5px; left: 5px; right: 5px; bottom: 5px; border-top-color: #00cc33; animation: spin 2s linear infinite reverse; }
+.cyber-loader::after { top: 15px; left: 15px; right: 15px; bottom: 15px; border-top-color: #008f11; animation: spin 1s linear infinite; }
+
+.loader-text { margin-top: 20px; font-family: monospace; color: var(--matrix-green); font-size: 1.5rem; font-weight: bold; }
+
+/* Animation Explosion Preloader */
+.preloader-explode .cyber-loader { animation: explode 0.6s cubic-bezier(0.7, 0, 0.3, 1) forwards; border-color: #fff; border-width: 5px; box-shadow: 0 0 50px var(--matrix-green); }
+.preloader-explode .loader-text { animation: textZoom 0.4s ease-in forwards; color: #fff; }
+
+/* --- BACKGROUND MATRIX (Optimisé) --- */
+.matrix-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.matrix-char {
+    position: absolute; color: var(--matrix-green); font-family: monospace; opacity: 0.15;
+    animation: matrix linear infinite; will-change: transform;
+}
+
+/* --- UI ELEMENTS --- */
+.gradient-text { background: linear-gradient(90deg, #00ff41, #ffd700); -webkit-background-clip: text; color: transparent; }
+
+.card-hover { transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px -5px rgba(0, 255, 65, 0.15); border-color: var(--matrix-green); }
+
+/* --- EFFET SCANNER (Modifié: Aller-Retour) --- */
+.card-hover::after {
+    content: "";
+    position: absolute;
+    inset: 0; /* Couvre toute la carte */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 255, 65, 0.05) 40%,
+        rgba(0, 255, 65, 0.5) 50%, /* Ligne brillante un peu plus intense */
+        rgba(0, 255, 65, 0.05) 60%,
+        transparent 100%
+    );
+    background-size: 100% 200%; /* Le dégradé fait 2x la hauteur de la carte */
+    background-position: 0% -100%; /* Position initiale (au-dessus) */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1; /* Au dessus du fond */
+    transition: opacity 0.3s;
+}
+
+.card-hover:hover::after {
+    opacity: 1;
+    /* Animation de 3s, aller-retour (alternate), en boucle (infinite) */
+    animation: scanner-move 3s ease-in-out infinite alternate;
+}
+
+/* S'assurer que le contenu est au-dessus du scanner */
+.card-hover > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes scanner-move {
+    0% { background-position: 0% -100%; } /* Départ haut */
+    100% { background-position: 0% 200%; } /* Fin bas */
+}
+
+/* Curseur personnalisé (Desktop uniquement) */
+.cursor-dot, .cursor-outline {
+    position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 9999; pointer-events: none;
+    transform: translate3d(-50%, -50%, 0); display: none;
+}
+@media (pointer: fine) { .cursor-dot, .cursor-outline { display: block; } }
+
+.cursor-dot { width: 8px; height: 8px; background: var(--matrix-green); box-shadow: 0 0 10px var(--matrix-green); }
+.cursor-outline { 
+    width: 40px; height: 40px; border: 1px solid rgba(0, 255, 65, 0.5);
+    transition: width 0.2s, height 0.2s, background-color 0.2s; will-change: transform, width, height;
+}
+body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(0, 255, 65, 0.1); border-color: var(--matrix-green); }
+
+/* --- ANIMATIONS --- */
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes matrix { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+@keyframes explode { 100% { transform: scale(50); opacity: 0; border-width: 0; } }
+@keyframes textZoom { 100% { transform: scale(5); opacity: 0; letter-spacing: 20px; } }
+
+/* Badges flottants */
+@keyframes float-pulse {
+    0%, 100% { transform: translateY(0); box-shadow: 0 0 5px rgba(0,255,65,0.2); border-color: rgba(0,255,65,0.4); }
+    50% { transform: translateY(-10px); box-shadow: 0 0 15px rgba(0,255,65,0.6); border-color: var(--matrix-green); }
+}
+.badge-animated { animation: float-pulse 4s ease-in-out infinite; }
+
+/* Ripple Effect */
+@keyframes ripple { 0% { box-shadow: 0 0 0 0 rgba(34,211,238,0.7); } 100% { box-shadow: 0 0 0 10px rgba(34,211,238,0); } }
+.ripple-effect { animation: ripple 1.5s infinite; border-radius: 50%; }
+
+/* Typing cursor */
+.typing-cursor::after { content: '|'; animation: blink 1s step-end infinite; color: var(--matrix-green); }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Contour vert pulsant pour formation */
+@keyframes pulse-green-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); border-color: rgba(34, 197, 94, 0.2); }
+    50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.6); }
+}
+.pulse-border-green { animation: pulse-green-border 3s infinite; }
+
+/* --- SCROLL REVEAL AVEC FLASH COULEUR (Animation 1) --- */
+.reveal-on-scroll { 
+    opacity: 0; 
+    transform: translateY(30px);
+}
+
+/* Nouvelle animation de flash lors de l'apparition */
+.reveal-visible { 
+    animation: revealFlash 0.8s ease-out forwards; 
+}
+
+@keyframes revealFlash {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: brightness(1) drop-shadow(0 0 0 transparent);
+    }
+    40% {
+        opacity: 1;
+        /* Flash lumineux vert au milieu de l'apparition */
+        filter: brightness(1.5) drop-shadow(0 0 10px var(--matrix-green));
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1) drop-shadow(0 0 0 transparent);
+        transform: translateY(0);
+    }
+}
+
+/* Délai en cascade pour les grilles (Utilise animation-delay maintenant) */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
